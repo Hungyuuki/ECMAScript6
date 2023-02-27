@@ -25,8 +25,41 @@ console.log(rest);
 var course = {
     name: 'JavaScript',
     price: 100,
-    discount: 0.1
+    discount: 0.1,
+    children: {
+        name: 'Reactjs',
+        price: 200,
+        discount: 0.2
+    }
 }
 
-var {name, price,...rest} = course;
-console.log(name, price, rest)
+// var {name, ...newObjects} = course;
+var {name: parentName, children: {name: childrenName}} = course;//đặt lại trường name cho cha và con
+console.log(name)
+console.log(rest)
+// console.log(newObjects)//trả về hẳn 1 object mới dựa trên obj cũ nhưng ko có name
+console.log(childrenName)
+console.log(parentName)
+
+
+
+
+//10: Spread
+
+// function logger({name, price, ...rest}) {//truyền thằng đối tượng logger vào
+//     console.log(name)//in ra các thuộc tính
+//     console.log(price)
+//     console.log(rest)
+// }
+// logger ({
+//     name: 'JavaScript',
+//     price: 100,
+//     discount: 0.1
+// })
+
+function logger([a, b, ...rest]) {
+    console.log(a, b)
+    console.log(rest)
+}
+
+logger([2, 6, 7, 8, 9, 10])
